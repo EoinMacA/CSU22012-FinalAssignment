@@ -5,12 +5,11 @@ import java.util.Locale;
 import java.util.Scanner;
 
 public class Main{
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) throws FileNotFoundException {
         System.out.println(("Welcome to Vancouver Bus Services, this app will help you find your next route!"));
 
         shortestPath graph = new shortestPath("stop_times.txt", "transfers.txt");
-        myStops theStops = new main().new myStops("stop_times.txt");
+        myRoute theStops = new Main().new myRoute("stop_times.txt");
         TST TST = new TST("stops.txt");
         Scanner input = new Scanner (System.in);
 
@@ -61,7 +60,7 @@ public class Main{
                                 {
                                     int stopA= Integer.parseInt(stops[0]);
                                     int stopB = Integer.parseInt(stops[1]);
-                                    System.out.println("The shortest distance from stop 1: "+ stopA + "to" + stopB "is" + graph.shortestTime(stopA, stopB));
+                                    System.out.println("The shortest distance from stop 1: "+ stopA + "to" + stopB + "is" + graph.shortestTime(stopA, stopB));
                                 }
                                 catch(NumberFormatException n)
                                 {
@@ -154,19 +153,19 @@ public class Main{
                                     else
                                     {
                                         List<stopTimes.info> stops = stopTimes.getStopsInfo(user);
-                                        if(myStops!= null && myStops.size()>0)
+                                        if(myRoute!= null && myRoute.size()>0)
                                         {
-                                            System.out.println("Arrival time: " + myStops.size() + "");
+                                            System.out.println("Arrival time: " + myRoute.size() + "");
                                             int j = 1;
-                                            for(stopTimes.info s:myStops)
+                                            for(stopTimes.info s:myRoute)
                                             {
-                                                System.out.println(j+".)" + "Trip ID:" +s:myStops);
-                                                System.out.printf("Departure Time:%s %nStop Id:%d %nStop Sequence:%d" +"+ %nStop Headsign:%s %nPickup Type:%d %nDrop Off Type:%d %nShape Distance Traveled:%.3f%n\"," + "s.departure_time,s.stop_id,s.stop_sequence,s.stop_headsign,s.pickup_type," + "s.drop_off_type,s.shape_dist_traveled");
+                                                System.out.println(j+".)" + "Trip ID:" + s:myRoute);
+                                                System.out.printf("Departure Time:%s %nStop Id:%d %nStop Sequence:%d" +"+ %nStop Headsign:%s %nPickup Type:%d %nDrop Off Type:%d %nShape Distance Traveled:%.3f%n," + "s.departure_time,s.stop_id,s.stop_sequence,s.stop_headsign,s.pickup_type," + "s.drop_off_type,s.shape_dist_traveled");
                                                 System.out.println();
                                                 j++;
                                             }
                                         }
-                                        else
+                                          else
                                         {
                                             System.out.println("No trips available");
                                         }
@@ -193,9 +192,9 @@ public class Main{
         }
         input.close();
     }
-    class myStops extends stopTimes
+    class myRoute extends stopTimes
     {
-        myStops(String filename) throws FileNotFoundException {
+        myRoute(String filename) throws FileNotFoundException {
             super(filename);
         }
     }

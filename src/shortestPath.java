@@ -8,7 +8,7 @@ import static com.sun.tools.classfile.Module_attribute.ProvidesEntry.length;
 
 
 public class shortestPath<to, lastRoute, nextRoute> {
-    private double adjacencyMatrix[][] = new double[2000][2000];
+    private double adjacencyMatrix[][] = new double[1200][1200];
     private String stopTimesFiles, otherRoutesFiles;
 
     shortestPath(String stopTimesFiles, String otherRoutesFiles) throws FileNotFoundException {

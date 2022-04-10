@@ -59,7 +59,7 @@ public class stopTimes {
     public static List<trip> stopInfo(String arrTime) {
         List<trip> stops = new ArrayList<>();
         try {
-            Time arrT = Time.value(arrTime);
+            Time arrT = Time.valueOf(arrTime);
             String testTime[] = arrTime.split(":");
             if (Integer.parseInt(testTime[0]) < 24 && Integer.parseInt(testTime[1]) < 60
                     && Integer.parseInt(testTime[2]) < 60) {
@@ -83,16 +83,16 @@ public class stopTimes {
         }
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
         new stopTimes("stop_times.txt");
 
         List<trip> myRoute = stopTimes.stopInfo("5:25:00");
         if (myRoute != null);
     }
     {
-        System.out.println((myRoute.size()));
+        System.out.println((Main.myRoute.size()));
 
-        for(trips s: myRoute)
+        for(trips s:myRoute)
         {
             System.out.println("stopheadsign:"+s.stop_head);
             System.out.printf("trip_id:%d,arrival_time:%s,departure_time:%s,stop_id:%d,stop_sequence:%d,"
@@ -102,6 +102,9 @@ public class stopTimes {
     else
     {
         System.out.println("error");
+    }
+
+    public static List<stopTimes.info> getStopsInfo(String user) {
     }
 
     protected class trip
